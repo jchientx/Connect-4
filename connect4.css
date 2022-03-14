@@ -1,0 +1,71 @@
+/* game board table */
+
+#board {
+  height: 600px;
+  border-left: 25px solid #0077be;
+  border-right: 25px solid #0077be;
+  border-bottom: none;
+  position: relative;
+  justify-content: center; /*no effect, not at the center */
+}
+
+#board td {
+  width: 70px;
+  height: 70px;
+  border: solid 1px #666;
+  background: #dfc12a;
+}
+
+/* pieces are div within game table cells: draw as colored circles */
+
+.piece {
+  /* TODO: make into circles */
+  z-index: 1;
+  border-radius: 50%; /*50-100% looks the same*/
+  margin: 5px;
+  width: 80%;
+  height: 80%;
+  display: none;
+  /*position: absolute;*/ /*Add this line will ruin the effect. Why?*/
+  overflow: hidden;
+  top: 0; /*bottom:0 also works?*/
+  left: 0;
+}
+
+.player-drop {
+  display: block;
+  animation: drop 0.5s linear;
+}
+
+@keyframes drop {
+  0% {
+    transform: translateY(-500px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* TODO: make pieces red/blue,  depending on player 1/2 piece */
+.p1 {
+  background-color: red;
+  /* color: add color to the Text */
+  /* background: adding different type of background property name */
+  /* the effect of background is the same as background-color!*/
+}
+
+.p2 {
+  background-color: blue;
+}
+
+/* column-top is table row of clickable areas for each column */
+
+#column-top td {
+  border: dashed 1px lightgray; /*lightgray at this line no effect*/
+  background: lightgray;
+}
+
+#column-top td:hover {
+  background-color: yellow;
+  cursor: pointer;
+}
