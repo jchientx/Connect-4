@@ -5,12 +5,11 @@
  * board fills (tie)
  */
 
-// what might the flow of the game be?
-// X Start button to start the game?
+// The flow of the game
 // => Create rows & columns size for the players
 // => click event handler
-// => set & memary separate counting accumulator for player1 & player2
-// => count 4 points (horiz, vert, or diag) to the win criteria
+// => set & memory separate counting accumulator for player1 & player2
+// => count 4 points (horiz, vert, or diag) for the win criteria
 // => refresh the game
 
 const WIDTH = 7;
@@ -37,67 +36,55 @@ function makeBoard() {
 /** makeHtmlBoard: make HTML table and row of column tops. */
 
 function makeHtmlBoard() {
-  // TODO: get "htmlBoard" variable from the item in HTML w/ID of "board"
+  // get "htmlBoard" variable from the item in HTML w/ID of "board"
   const htmlBoard = document.getElementById("board");
-  // TODO: append a row of WIDTH value on the very top above of the whole htmlBoard table for adding a piece to that column
+  // append a row of WIDTH value on the very top above of the whole htmlBoard table for adding a piece to that column
   const top = document.createElement("tr"); //creating a row of the table
   top.setAttribute("id", "column-top"); // setting id of the tr to column-top
   top.addEventListener("click", handleClick); // adding a click event listener and call handleClick()
 
   for (let x = 0; x < WIDTH; x++) {
-    const headCell = document.createElement("td"); // creating a table data element * WIDTH amount
-    headCell.setAttribute("id", x); // setting id of the td to x
-    top.append(headCell); // displaying headCell under the top and appending the td to the tr (top)
+    const headCell = document.createElement("td"); 
+    headCell.setAttribute("id", x); 
+    top.append(headCell); 
   }
-  htmlBoard.append(top); // displaying top and appending the tr (top) to htmlBoard
+  htmlBoard.append(top); 
 
-  // TODO: append the rows of WIDTH value and the columns of HEIGHT value to the htmlBoard table
+  // append the rows of WIDTH value and the columns of HEIGHT value to the htmlBoard table
   for (let y = 0; y < HEIGHT; y++) {
-    const row = document.createElement("tr"); // creating a table row (tr) * HEIGHT amount
+    const row = document.createElement("tr"); 
     for (let x = 0; x < WIDTH; x++) {
-      const cell = document.createElement("td"); // creating a table data (td) * WIDTH amount
-      cell.setAttribute("id", `${y}-${x}`); // setting id of the td to `${y}-${x}`
-      row.append(cell); // displaying cell and appending the cell to row
+      const cell = document.createElement("td"); /
+      cell.setAttribute("id", `${y}-${x}`); 
+      row.append(cell); 
     }
-    htmlBoard.append(row); // displaying row and appending the row to htmlBoard
+    htmlBoard.append(row); 
   }
 }
 
 /** findSpotForCol: given column x, return top empty y (null if filled) */
 
 function findSpotForCol(x) {
-  // TODO: write the real version of this, rather than always returning 0
   for (let y = 0; y < HEIGHT; y++) {
     if (board[y][x] === null) {
-      console.log(y);
-      console.log(document.getElementById(`${y}-${x}`));
       return y;
     }
-    //console.log(document.getElementById(`${y}-${x}`));
-    //return null; // This line will stop the for loop
   }
 }
 
 /** placeInTable: update DOM to place piece into HTML table of board */
 
 function placeInTable(y, x) {
-  // TODO: make a div and insert into correct table cell
+  // make a div and insert into correct table cell
   const div = document.createElement("div");
-  //div.setAttribute("class", "piece");
-  //div.setAttribute("class", "p1");
   div.classList.add("piece", "player-drop", `p${currPlayer}`);
-
-  // const cell = document.getElementById(`${y}-${x}`);
-  // cell.append(div);
-
-  document.querySelector("#board").rows[HEIGHT - y].cells[x].appendChild(div); // rows count from top to bottom or vise versa?
-  //document.querySelector("#board").rows[HEIGHT - y].cells[x].append(div); //append or appendChild both works
+  document.querySelector("#board").rows[HEIGHT - y].cells[x].appendChild(div); //append or appendChild both works
 }
 
 /** endGame: announce game end */
 
 function endGame(msg) {
-  // TODO: pop up alert message
+  // pop up alert message
   alert(msg);
 }
 
@@ -114,7 +101,7 @@ function handleClick(evt) {
   }
 
   // place piece in board and add to HTML table
-  // TODO: add line to update in-memory board
+  // add line to update in-memory board
   board[y][x] = currPlayer; // record the cell you clicked is p1 or p2
   placeInTable(y, x);
 
@@ -124,14 +111,14 @@ function handleClick(evt) {
   }
 
   // check for tie
-  // TODO: check if all cells in board are filled; if so call, call endGame
+  // check if all cells in board are filled; if so call, call endGame
+  // every(Boolean): return false when it is given null, true when it is given 1 or 2
   if (board.every((cell) => cell.every(Boolean))) {
-    // every(Boolean): return false when it is given null, true when it is given 1 or 2
     return endGame("It's a draw!");
   }
 
   // switch players
-  // TODO: switch currPlayer 1 <-> 2
+  // switch currPlayer 1 <-> 2
   currPlayer = 3 - currPlayer;
 }
 
@@ -153,7 +140,6 @@ function checkForWin() {
     );
   }
 
-  // TODO: read and understand this code. Add comments to help you.
   // list all win criteria of 4 cells in a row
   for (let y = 0; y < HEIGHT; y++) {
     for (let x = 0; x < WIDTH; x++) {
