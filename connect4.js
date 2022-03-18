@@ -3,14 +3,14 @@
  * Player 1 and 2 alternate turns. On each turn, a piece is dropped down a
  * column until a player gets four-in-a-row (horiz, vert, or diag) or until
  * board fills (tie)
- */
 
-// The flow of the game
-// => Create rows & columns size for the players
-// => click event handler
-// => set & memory separate counting accumulator for player1 & player2
-// => count 4 points (horiz, vert, or diag) for the win criteria
-// => refresh the game
+ The flow of the game
+ => Create rows & columns size for the players
+ => click event handler
+ => set & memory separate counting accumulator for player1 & player2
+ => count 4 points (horiz, vert, or diag) for the win criteria
+ => refresh the game
+ */
 
 const WIDTH = 7;
 const HEIGHT = 6;
@@ -23,14 +23,13 @@ const board = []; // array of rows, each row is array of cells  (board[y][x])
  */
 
 function makeBoard() {
-  // TODO: set "board" to empty HEIGHT x WIDTH matrix array
+  // set "board" to empty HEIGHT x WIDTH matrix array
   for (let i = 0; i < HEIGHT; i++) {
     board.push([0]);
     for (let j = 0; j < WIDTH; j++) {
       board[i][j] = null;
     }
   }
-  //return board;
 }
 
 /** makeHtmlBoard: make HTML table and row of column tops. */
