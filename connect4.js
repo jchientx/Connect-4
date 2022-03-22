@@ -5,10 +5,10 @@
  * board fills (tie)
 
  The flow of the game
- => Create rows & columns size for the players
+ => create rows & columns size for the players
  => click event handler
- => set & memory separate counting accumulator for player1 & player2
- => count 4 points (horiz, vert, or diag) for the win criteria
+ => set & memory separate counting class & css for player1 & player2
+ => list 4 cells in a row (horiz, vert, or diag) for the win criteria
  => refresh the game
  */
 
